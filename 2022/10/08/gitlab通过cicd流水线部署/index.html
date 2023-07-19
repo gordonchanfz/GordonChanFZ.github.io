@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>gitlab通过CICD流水线部署 | 个人博客</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="./favicon.ico">
+    <script>
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?55943ae09e5901d7a9f5705133737eec";
+              var s = document.getElementsByTagName("script")[0];
+              s.parentNode.insertBefore(hm, s);
+            })();
+           </script>
+    <script src="https://hm.baidu.com/hm.js?xxxxxxxxxxx"></script>
+    <meta name="description" content="会思考的芦苇。">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="robots" content="all">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="preload" href="./assets/css/0.styles.f4f644f3.css" as="style"><link rel="preload" href="./assets/js/app.764dede6.js" as="script"><link rel="preload" href="./assets/js/13.20e964b9.js" as="script"><link rel="preload" href="./assets/js/1.8757f81f.js" as="script"><link rel="preload" href="./assets/js/22.8c016772.js" as="script"><link rel="preload" href="./assets/js/34.ec572062.js" as="script"><link rel="prefetch" href="./assets/js/10.36ed4133.js"><link rel="prefetch" href="./assets/js/11.18e1c33d.js"><link rel="prefetch" href="./assets/js/12.b32071c5.js"><link rel="prefetch" href="./assets/js/14.d0932ff0.js"><link rel="prefetch" href="./assets/js/15.7747d51d.js"><link rel="prefetch" href="./assets/js/16.487f9c88.js"><link rel="prefetch" href="./assets/js/17.9ae2b89b.js"><link rel="prefetch" href="./assets/js/18.801c9b12.js"><link rel="prefetch" href="./assets/js/19.867ef46b.js"><link rel="prefetch" href="./assets/js/20.ec371d7f.js"><link rel="prefetch" href="./assets/js/21.73f810bc.js"><link rel="prefetch" href="./assets/js/23.9aa3d5ef.js"><link rel="prefetch" href="./assets/js/24.a6dcda10.js"><link rel="prefetch" href="./assets/js/25.2fe13775.js"><link rel="prefetch" href="./assets/js/26.2296389e.js"><link rel="prefetch" href="./assets/js/27.21f2d66f.js"><link rel="prefetch" href="./assets/js/28.3209357f.js"><link rel="prefetch" href="./assets/js/29.c7065b7f.js"><link rel="prefetch" href="./assets/js/3.9efa3b27.js"><link rel="prefetch" href="./assets/js/30.92914cc9.js"><link rel="prefetch" href="./assets/js/31.13c12633.js"><link rel="prefetch" href="./assets/js/32.b016f60e.js"><link rel="prefetch" href="./assets/js/33.ed48a654.js"><link rel="prefetch" href="./assets/js/35.5b55607b.js"><link rel="prefetch" href="./assets/js/36.f50b6e38.js"><link rel="prefetch" href="./assets/js/37.34409ac4.js"><link rel="prefetch" href="./assets/js/38.c7073f77.js"><link rel="prefetch" href="./assets/js/39.12f063e9.js"><link rel="prefetch" href="./assets/js/4.95c562bd.js"><link rel="prefetch" href="./assets/js/40.1bbd5377.js"><link rel="prefetch" href="./assets/js/41.6331a8cf.js"><link rel="prefetch" href="./assets/js/42.28acd6f5.js"><link rel="prefetch" href="./assets/js/43.905d2114.js"><link rel="prefetch" href="./assets/js/44.041132c5.js"><link rel="prefetch" href="./assets/js/45.d1a66b92.js"><link rel="prefetch" href="./assets/js/46.1c9100fe.js"><link rel="prefetch" href="./assets/js/47.3e75f768.js"><link rel="prefetch" href="./assets/js/48.7d7248fb.js"><link rel="prefetch" href="./assets/js/49.8d465809.js"><link rel="prefetch" href="./assets/js/5.a1a0df33.js"><link rel="prefetch" href="./assets/js/50.4aa56564.js"><link rel="prefetch" href="./assets/js/51.59674bf5.js"><link rel="prefetch" href="./assets/js/52.f3990683.js"><link rel="prefetch" href="./assets/js/53.092fe0ad.js"><link rel="prefetch" href="./assets/js/54.ac62e2a7.js"><link rel="prefetch" href="./assets/js/55.3530fa5a.js"><link rel="prefetch" href="./assets/js/56.6e9bc6f3.js"><link rel="prefetch" href="./assets/js/6.e534639a.js"><link rel="prefetch" href="./assets/js/7.bc868936.js"><link rel="prefetch" href="./assets/js/8.ce0f4f25.js"><link rel="prefetch" href="./assets/js/9.a57a9cf0.js">
+    <link rel="stylesheet" href="./assets/css/0.styles.f4f644f3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>Gordon</h3> <p class="description" data-v-59e6cb88>会思考的芦苇。</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>Gordon</span>
+          
+        <span data-v-59e6cb88>2018 - </span>
+        2023
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/./" class="home-link router-link-active"><img src="./logo.png" alt="个人博客" class="logo"> <span class="site-name">个人博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/./" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      计算引擎
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/./计算引擎/flink.html" class="nav-link"><i class="undefined"></i>
+  flink
+</a></li><li class="dropdown-item"><!----> <a href="/./计算引擎/spark.html" class="nav-link"><i class="undefined"></i>
+  spark
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      存储引擎
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/./存储引擎/ElasticSearch.html" class="nav-link"><i class="undefined"></i>
+  ElasticSearch
+</a></li><li class="dropdown-item"><!----> <a href="/./存储引擎/hbase.html" class="nav-link"><i class="undefined"></i>
+  hbase
+</a></li><li class="dropdown-item"><!----> <a href="/./存储引擎/redis.html" class="nav-link"><i class="undefined"></i>
+  redis
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      云原生
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/./云原生/Docker.html" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      中间件
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/./中间件/kafka.html" class="nav-link"><i class="undefined"></i>
+  kafka
+</a></li><li class="dropdown-item"><!----> <a href="/./中间件/Sqoop基本使用.html" class="nav-link"><i class="undefined"></i>
+  Sqoop基本使用
+</a></li></ul></div></div><div class="nav-item"><a href="/./tool/emoji/我的常用emoji.html" class="nav-link"><i class="undefined"></i>
+  工具
+</a></div><div class="nav-item"><a href="/./aboutme.html" class="nav-link"><i class="iconfont reco-account"></i>
+  关于我
+</a></div> <a href="https://github.com/GordonChanFZ/gordonchanfz.github.io/" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><img src="./avatar.jpeg" alt="author-avatar" class="personal-img" data-v-1fad0c41> <h3 class="name" data-v-1fad0c41>
+    Gordon
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>30</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>47</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41><li class="social-item" data-v-1fad0c41><i class="iconfont reco-github" style="color:#e15b64;" data-v-1fad0c41></i></li></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/./" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      计算引擎
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/./计算引擎/flink.html" class="nav-link"><i class="undefined"></i>
+  flink
+</a></li><li class="dropdown-item"><!----> <a href="/./计算引擎/spark.html" class="nav-link"><i class="undefined"></i>
+  spark
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      存储引擎
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/./存储引擎/ElasticSearch.html" class="nav-link"><i class="undefined"></i>
+  ElasticSearch
+</a></li><li class="dropdown-item"><!----> <a href="/./存储引擎/hbase.html" class="nav-link"><i class="undefined"></i>
+  hbase
+</a></li><li class="dropdown-item"><!----> <a href="/./存储引擎/redis.html" class="nav-link"><i class="undefined"></i>
+  redis
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      云原生
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/./云原生/Docker.html" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      中间件
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/./中间件/kafka.html" class="nav-link"><i class="undefined"></i>
+  kafka
+</a></li><li class="dropdown-item"><!----> <a href="/./中间件/Sqoop基本使用.html" class="nav-link"><i class="undefined"></i>
+  Sqoop基本使用
+</a></li></ul></div></div><div class="nav-item"><a href="/./tool/emoji/我的常用emoji.html" class="nav-link"><i class="undefined"></i>
+  工具
+</a></div><div class="nav-item"><a href="/./aboutme.html" class="nav-link"><i class="iconfont reco-account"></i>
+  关于我
+</a></div> <a href="https://github.com/GordonChanFZ/gordonchanfz.github.io/" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>gitlab通过CICD流水线部署</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>Gordon</span>
+          
+        <span data-v-59e6cb88>2018 - </span>
+        2023
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">gitlab通过CICD流水线部署</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>Gordon</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2022-10-8</span></i> <!----> <i class="tags iconfont reco-tag" data-v-8a445198><span class="tag-item" data-v-8a445198>CICD</span><span class="tag-item" data-v-8a445198>持续集成部署</span><span class="tag-item" data-v-8a445198>pipeline</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="环境准备"><a href="#环境准备" class="header-anchor">#</a> 环境准备</h2> <h3 id="_1-jdk"><a href="#_1-jdk" class="header-anchor">#</a> 1.JDK：</h3> <ul><li>将包上传到对应的目录下</li> <li>使用tar -zxvf jdk-8u161-linux-x64.tar.gz 进行解压包</li> <li>修改配置文件：vi /etc/profile</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">JAVA_HOME</span><span class="token operator">=</span>/home/soft/java8/jdk
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token variable">$JAVA_HOME</span>/bin:<span class="token environment constant">$PATH</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">CLASSPATH</span><span class="token operator">=</span>.:<span class="token variable">$JAVA_HOME</span>/lib/dt.jar:<span class="token variable">$JAVA_HOME</span>/lib/tools.jar
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>通过source /etc/profile 进行重新编译</li> <li>通过java -version查看是否已经安装成功</li></ul> <h3 id="_2-maven"><a href="#_2-maven" class="header-anchor">#</a> 2.maven：</h3> <ul><li>包解压跟jdk一样</li> <li>找到localRepository,并进行修改本地仓库地址（conf/setting.xml文件下）</li> <li>添加mirror:</li></ul> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirror</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>alimaven<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>aliyun maven<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">&gt;</span></span>http://maven.aliyun.com/nexus/content/groups/public/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirrorOf</span><span class="token punctuation">&gt;</span></span>central<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirrorOf</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirror</span><span class="token punctuation">&gt;</span></span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>修改配置文件</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">MAVEN_HOME</span><span class="token operator">=</span>/home/soft/maven/maven
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span><span class="token builtin class-name">:</span><span class="token variable">$MAVEN_HOME</span>/bin  
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>通过source /etc/proflie进行重新编译</li> <li>通过mvn -version查看是否已经安装成功</li></ul> <h3 id="_3-git"><a href="#_3-git" class="header-anchor">#</a> 3.Git</h3> <ul><li>解压跟jdk一样</li> <li>安装编译所需要的依赖</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>yum <span class="token function">install</span> curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeMaker
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>编译git源码 make prefix=/home/soft/git/git all (/home/soft/git为文件所在的路径)</li> <li>安装git的路径 make prefix=/home/socf/git/git install</li> <li>配置环境变量：vi /etc/profile</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:/home/soft/git/git
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="_4-docker-本次安装没有使用到-仅做了解使用"><a href="#_4-docker-本次安装没有使用到-仅做了解使用" class="header-anchor">#</a> 4.Docker (本次安装没有使用到，仅做了解使用)</h3> <p>安装： yum install -y docker<br>
+查看状态：systemctl status docker<br>
+docker启动：systemctl start docker/systemctl start docker.service<br>
+service docker start<br>
+重启docker服务：systemctl restart docker<br>
+sudo service docker restart<br>
+关闭docker：systemctl stop docker<br>
+service docker stop<br>
+查看所有镜像：docker images<br>
+生成镜像：docker build -t 镜像名称：<br>
+删除镜像:docker rmi 镜像名称<br>
+启动镜像并实现端口映射：docker run -p 192.168.211.128:8081:8081 镜像名称<br>
+生成容器并且启动镜像：docker run -d -p --name 容器名称 镜像名称</p> <h2 id="gitlab安装"><a href="#gitlab安装" class="header-anchor">#</a> GitLab安装</h2> <p>前置条件：关闭防火墙，查看防火墙的状态：</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>systemctl status firewalld.service
+systemctl stop firewalld 关闭防火墙
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="_1-安装"><a href="#_1-安装" class="header-anchor">#</a> 1.安装：</h3> <ul><li>配置yum源： vi /etc/yum.repos.d/gitlab-ce.repo</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token punctuation">[</span>gitlab-ce<span class="token punctuation">]</span>
+<span class="token assign-left variable">name</span><span class="token operator">=</span>Gitlab CE Repository
+<span class="token assign-left variable">baseurl</span><span class="token operator">=</span>https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el<span class="token variable">$releasever</span>/
+<span class="token assign-left variable">gpgcheck</span><span class="token operator">=</span><span class="token number">0</span>
+<span class="token assign-left variable">enabled</span><span class="token operator">=</span><span class="token number">1</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>更新本地源：yum makecache</li> <li>安装gitlab社区版：yum install gitlab-ce</li> <li>安装完成后的默认目录：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>gitlab组件日志路径：/var/log/gitlab
+gitlab配置路径：/etc/gitlab/  路径下有gitlab.rb配置文件
+应用代码和组件依赖程序：/opt/gitlab
+各个组件存储路径： /var/opt/gitlab/
+仓库默认存储路径   /var/opt/gitlab/git-data/repositories
+版本文件备份路径：/var/opt/gitlab/backups/
+nginx安装路径：/var/opt/gitlab/nginx/
+redis安装路径：/var/opt/gitlab/redis
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>修改默认ip和端口： vi /etc/gitlab/gitlab.rb</li></ul> <p><img src="./assets/img/74006930ec014fc1bf466641b10e66f3.fa2b4011.png" alt="img"></p> <ul><li>配置邮箱</li> <li>需要安装postfix邮箱</li> <li>安装:yum install -y postfix</li> <li>设置开机自启：systemctl enable postfix</li> <li>启动：systemctl start psotfix</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>还是要修改上方的gitlab.rb （本次测试没有使用到，新建用户的时候，如果没有添加邮件是不会添加成功的，执行失败还是会发送邮件的）
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment">#修改以下内容</span>
+gitlab_rails<span class="token punctuation">[</span><span class="token string">'gitlab_email_enabled'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span>
+gitlab_rails<span class="token punctuation">[</span><span class="token string">'gitlab_email_from'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'发信邮箱'</span>
+gitlab_rails<span class="token punctuation">[</span><span class="token string">'gitlab_email_display_name'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'xxx'</span>
+ 
+gitlab_rails<span class="token punctuation">[</span><span class="token string">'smtp_enable'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span>
+gitlab_rails<span class="token punctuation">[</span><span class="token string">'smtp_address'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;smtp.163.com&quot;</span>
+gitlab_rails<span class="token punctuation">[</span><span class="token string">'smtp_port'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">465</span>
+gitlab_rails<span class="token punctuation">[</span><span class="token string">'smtp_user_name'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;发信邮箱&quot;</span>
+gitlab_rails<span class="token punctuation">[</span><span class="token string">'smtp_password'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;smtp客户端授权码&quot;</span>
+gitlab_rails<span class="token punctuation">[</span><span class="token string">'smtp_domain'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;163.com&quot;</span>
+gitlab_rails<span class="token punctuation">[</span><span class="token string">'smtp_authentication'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;login&quot;</span>
+gitlab_rails<span class="token punctuation">[</span><span class="token string">'smtp_enable_starttls_auto'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span>
+gitlab_rails<span class="token punctuation">[</span><span class="token string">'smtp_tls'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span>
+gitlab_rails<span class="token punctuation">[</span><span class="token string">'smtp_openssl_verify_mode'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'none'</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><ul><li>修改完成后，重新加载配置文件：gitlab-ctl reconfigure</li> <li>如果修改了邮箱配置，测试邮箱是否开启：gitlab-rails console</li> <li>性能优化：</li></ul> <blockquote><p>同样，也是修改gitlab.rb文件</p></blockquote> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>puma<span class="token punctuation">[</span><span class="token string">'worker_processes'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span>                         <span class="token comment">#官方建议值为CPU核数+1（服务器只部署gitLab的情况下），可提高服务器响应速度，此参数最小值为2，设为1服务器可能卡死</span>
+puma<span class="token punctuation">[</span><span class="token string">'work_timeout'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">60</span>                            <span class="token comment">#设置超时时间</span>
+puma<span class="token punctuation">[</span><span class="token string">'worker_memory_limit_min'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;200 * 1 &lt;&lt; 20&quot;</span>    <span class="token comment">#减少最小内存</span>
+puma<span class="token punctuation">[</span><span class="token string">'worker_memory_limit_max'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;300 * 1 &lt;&lt; 20&quot;</span>    <span class="token comment">#减少最大内存</span>
+postgresql<span class="token punctuation">[</span><span class="token string">'shared_buffers'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">&quot;128MB&quot;</span>                  <span class="token comment">#减少数据库缓存</span>
+postgresql<span class="token punctuation">[</span><span class="token string">'max_worker_processes'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">6</span>                  <span class="token comment">#减少数据库并发数</span>
+sidekiq<span class="token punctuation">[</span><span class="token string">'concurrency'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">15</span>                             <span class="token comment">#减少sidekiq并发数</span>
+
+由于GitLab核心功能是代码托管，所以有些额外的组件比较浪费资源，所以可以考虑关闭。
+prometheus<span class="token punctuation">[</span><span class="token string">'enable'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span>
+prometheus<span class="token punctuation">[</span><span class="token string">'monitor_kubernetes'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span>
+alertmanager<span class="token punctuation">[</span><span class="token string">'enable'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span>  
+node_exporter<span class="token punctuation">[</span><span class="token string">'enable'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span> 
+redis_exporter<span class="token punctuation">[</span><span class="token string">'enable'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span> 
+postgres_exporter<span class="token punctuation">[</span><span class="token string">'enable'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span>
+gitlab_exporter<span class="token punctuation">[</span><span class="token string">'probe_sidekiq'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span>
+prometheus_monitoring<span class="token punctuation">[</span><span class="token string">'enable'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span>
+grafana<span class="token punctuation">[</span><span class="token string">'enable'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><ul><li>重新启动：sudo gitlab-ctl restart</li> <li>其他命令：</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>gitlab-ctl start <span class="token comment">#启动全部服务</span>
+gitlab-ctl restart<span class="token comment">#重启全部服务</span>
+gitlab-ctl stop <span class="token comment">#停止全部服务</span>
+gitlab-ctl restart nginx <span class="token comment">#重启单个服务，如重启nginx</span>
+gitlab-ctl status <span class="token comment">#查看服务状态</span>
+gitlab-ctl reconfigure <span class="token comment">#使配置文件生效</span>
+gitlab-ctl show-config <span class="token comment">#验证配置文件</span>
+gitlab-ctl uninstall <span class="token comment">#删除gitlab（保留数据）</span>
+gitlab-ctl cleanse <span class="token comment">#删除所有数据，从新开始</span>
+gitlab-ctl <span class="token function">tail</span> <span class="token operator">&lt;</span>service name<span class="token operator">&gt;</span>查看服务的日志
+gitlab-ctl <span class="token function">tail</span> nginx  <span class="token comment">#如查看gitlab下nginx日志</span>
+gitlab-rails console  <span class="token comment">#进入控制台</span>
+gitlab-ctl <span class="token builtin class-name">help</span>                  <span class="token comment">#查看gitlab帮助信息</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>安装完成后，默认的用户是root,密码需要查看： cat /etc/gitlab/initial_root_password</p> <h3 id="_2-安装gitlab-runner"><a href="#_2-安装gitlab-runner" class="header-anchor">#</a> 2.安装gitlab-runner</h3> <ul><li>到清华园中找到gitlab-runner:https://mirrors.tuna.tsinghua.edu.cn/gitlab-runner/yum/el7/</li> <li>上传到服务器中</li> <li>通过rpm -ivh gitlab-runner-12.9.1-1.x86_64.rpm --nodeps --force 去安装</li> <li>启动服务：systemctl start gitlab-runner</li> <li>查看服务状态：systemctl status gitlab-runner</li> <li>验证是否安装成功：gitlab-runner -h</li></ul> <h3 id="_3-gitlab-runner-注册"><a href="#_3-gitlab-runner-注册" class="header-anchor">#</a> 3.gitlab-runner 注册：</h3> <ul><li>注册共享型的runner:gitlab-runner register (下方是注册的时候，需要填写的内容)
+<ul><li><p>gitlab地址：Please enter the gitlab-ci coordinator URL (e.g. https://gitlab.com/)<br> <img src="./assets/img/77b00c0f68a944c283f7b62f8b8a330e.fc6be7e2.png" alt="在这里插入图片描述"></p></li> <li><p>runner注册令牌：Please enter the gitlab-ci token for this runner</p> <p><img src="./assets/img/eb51712dbacd442ba69efe3b33cca622.43746d89.png" alt="在这里插入图片描述"></p></li> <li><p>gitlab-runner的注释：Please enter the gitlab-ci description for this runner</p></li> <li><p>gitlab-runner的标签：Please enter the gitlab-ci tags for this runner (comma separated)</p></li> <li><p>执行器使用的方式：Please enter the executor: custom, docker, parallels, docker+machine, kubernetes, docker-ssh, shell, ssh, virtualbox, docker-ssh+machine</p></li></ul></li></ul> <p><img src="./assets/img/c0e99737c0ac4f2ca666a392b9b8bae0.f7ade84c.png" alt="在这里插入图片描述"></p> <ul><li>查看已注册的runner列表：gitlab-runner list</li> <li>取消所有注册列表：gitlab-runner unregister --all-runners</li></ul> <h3 id="_4-编辑流水线配置"><a href="#_4-编辑流水线配置" class="header-anchor">#</a> 4.编辑<a href="https://so.csdn.net/so/search?q=%E6%B5%81%E6%B0%B4%E7%BA%BF&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">流水线<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>配置：</h3> <p>首先：需要通过git生成私钥，然后上传到项目中：</p> <ul><li>生成ssh秘钥：ssh-keygen -t rsa<br>
+查看生成的秘钥： cat ~/.ssh/id_rsa<br>
+将私钥的值放到项目内的CICD变量中，命名为：SSH_PRIVATE_KEY</li></ul> <p><img src="./assets/img/a40f0e2f142244adbafbb9dab1e14eef.5223d5ad.png" alt="在这里插入图片描述"></p> <ul><li>修改如下文件，就可以操作了：</li></ul> <p><img src="./assets/img/bfe70c8d0af340959fb3a8378c1f8b64.6d104061.png" alt="在这里插入图片描述"></p> <ul><li>或者直接修改.gitlab-ci.yml文件</li></ul> <div class="language-yml line-numbers-mode"><pre class="language-yml"><code><span class="token comment"># 定义一些变量, 下面各阶段会使用</span>
+<span class="token key atrule">variables</span><span class="token punctuation">:</span>
+  <span class="token key atrule">server_ip</span><span class="token punctuation">:</span> 192.168.44.129
+  <span class="token key atrule">jar_name</span><span class="token punctuation">:</span> demo<span class="token punctuation">-</span>0.0.1<span class="token punctuation">-</span>SNAPSHOT.jar
+  <span class="token key atrule">java_path</span><span class="token punctuation">:</span> /home/java/java1.8/bin
+  <span class="token key atrule">upload_path</span><span class="token punctuation">:</span> /home/gitlab<span class="token punctuation">-</span>project/
+  <span class="token key atrule">ssh_password</span><span class="token punctuation">:</span> <span class="token number">111111</span>
+  <span class="token key atrule">repo_path</span><span class="token punctuation">:</span> /home/soft/maven/repo
+  <span class="token key atrule">jar_path</span><span class="token punctuation">:</span> com/example/demo/0.0.1<span class="token punctuation">-</span>SNAPSHOT
+
+<span class="token comment"># 定义执行的各个阶段及顺序</span>
+<span class="token key atrule">stages</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> build
+  <span class="token punctuation">-</span> upload
+  <span class="token punctuation">-</span> deploy
+ 
+<span class="token comment"># 使用 maven 镜像打包项目</span>
+<span class="token key atrule">maven-build</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> build
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> mvn clean install <span class="token punctuation">-</span>Dmaven.test.skip=true
+    <span class="token punctuation">-</span> echo &quot;打包结束&quot;
+
+<span class="token comment"># 将打包完成的jar包移动到指定的位置</span>
+<span class="token key atrule">upload-jar</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> upload
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> echo &quot;拷贝jar包到/home/gitlab<span class="token punctuation">-</span>project中&quot;
+    <span class="token punctuation">-</span> cd $repo_path/$jar_path
+    <span class="token punctuation">-</span> cp <span class="token punctuation">-</span>r $jar_name $upload_path
+<span class="token comment"># 启动 SpringBoot jar包</span>
+<span class="token key atrule">deploy-test</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> deploy
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> echo &quot;启动$jar_name&quot;
+    <span class="token punctuation">-</span> cd $upload_path
+    <span class="token punctuation">-</span> nohup java <span class="token punctuation">-</span>jar $jar_name <span class="token punctuation">&gt;</span>log.out &amp;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br></div></div><ul><li>stages:用于定义作何可以使用的阶段，并且是全局定义的。同一阶段的作业并行运行，不同阶段按照顺序进行</li> <li>script：运行的脚本</li></ul> <h3 id="_5-安装过程中遇到的问题"><a href="#_5-安装过程中遇到的问题" class="header-anchor">#</a> 5.安装过程中遇到的问题</h3> <p>1.build正常,deploy失败,报错如下</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>fatal: <span class="token function">git</span> fetch-pack: expected shallow list
+fatal: The remote end hung up unexpectedly
+ERROR: Job failed: <span class="token builtin class-name">exit</span> status <span class="token number">1</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>解决方案:</p> <p><a href="https://zhuanlan.zhihu.com/p/630394084" target="_blank" rel="noopener noreferrer">TS：gitlab-ci运行作业报错fatal: git fetch-pack: expected shallow list,fatal: - 知乎 (zhihu.com)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>解决方法，修改gitlab的cicd配置，如下图所示：</p> <p><img src="./assets/img/image-20230624012007810.6c4e586c.png" alt="image-20230624012007810"></p> <p>这里设置为<code>git clone</code>后，保存配置.</p> <p>cicd主要工作流程：</p> <p><img src="./assets/img/image-20230621212749792.51215d57.png" alt="image-20230621212749792"></p> <p>关于管道的设计：</p> <p>1.从job角度：你的工作流程是什么？可以分成几个阶段？每个阶段如何工作的？</p> <p>2.从stage角度：你的工作流程是分成了几个阶段？每个阶段如何工作的？整体流程是怎样的？</p> <p>管道类型体系架构：</p> <p><img src="./assets/img/image-20230621220948576.28cd159a.png" alt="image-20230621220948576"></p> <p><img src="./assets/img/image-20230621221025410.013afb44.png" alt="image-20230621221025410"></p> <p><img src="./assets/img/image-20230621221627664.de227166.png" alt="image-20230621221627664"></p> <h2 id="gitlab-cicd-流程规范"><a href="#gitlab-cicd-流程规范" class="header-anchor">#</a> gitlab CICD 流程规范</h2> <p><a href="https://blog.csdn.net/weixin_44275820/article/details/120510235" target="_blank" rel="noopener noreferrer">(183条消息) 基于gitlab的CICD流程规范_李先森&amp;Mr.Li的博客-CSDN博客<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><img src="./assets/img/e0cff238586c46668f8dc053dc9a22e9.5b12d802.png" alt="在这里插入图片描述"></p> <h2 id="附录常用命令及配置"><a href="#附录常用命令及配置" class="header-anchor">#</a> 附录常用命令及配置</h2> <p>gitlab命令</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>gitlab-ctl start <span class="token comment">#启动全部服务</span>
+gitlab-ctl restart<span class="token comment">#重启全部服务</span>
+gitlab-ctl stop <span class="token comment">#停止全部服务</span>
+gitlab-ctl restart nginx <span class="token comment">#重启单个服务，如重启nginx</span>
+gitlab-ctl status <span class="token comment">#查看服务状态</span>
+gitlab-ctl reconfigure <span class="token comment">#使配置文件生效</span>
+gitlab-ctl show-config <span class="token comment">#验证配置文件</span>
+gitlab-ctl uninstall <span class="token comment">#删除gitlab（保留数据）</span>
+gitlab-ctl cleanse <span class="token comment">#删除所有数据，从新开始</span>
+gitlab-ctl <span class="token function">tail</span> <span class="token operator">&lt;</span>service name<span class="token operator">&gt;</span>查看服务的日志
+gitlab-ctl <span class="token function">tail</span> nginx  <span class="token comment">#如查看gitlab下nginx日志</span>
+gitlab-rails console  <span class="token comment">#进入控制台</span>
+gitlab-ctl <span class="token builtin class-name">help</span>                  <span class="token comment">#查看gitlab帮助信息</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>gitlab-runnner</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>- 启动服务：systemctl start gitlab-runner
+- 查看服务状态：systemctl status gitlab-runner
+- 验证是否安装成功：gitlab-runner <span class="token parameter variable">-h</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>.gitlab-ci.yml配置</p> <p>官方模板：https://gitlab.com/gitlab-org/gitlab-foss/-/blob/master/lib/gitlab/ci/templates</p> <div class="language-yml line-numbers-mode"><pre class="language-yml"><code><span class="token comment"># 定义一些变量, 下面各阶段会使用</span>
+<span class="token key atrule">variables</span><span class="token punctuation">:</span>
+  <span class="token key atrule">server_ip</span><span class="token punctuation">:</span> 192.168.44.129
+  <span class="token key atrule">jar_name</span><span class="token punctuation">:</span> demo<span class="token punctuation">-</span>0.0.1<span class="token punctuation">-</span>SNAPSHOT.jar
+  <span class="token key atrule">java_path</span><span class="token punctuation">:</span> /home/java/java1.8/bin
+  <span class="token key atrule">upload_path</span><span class="token punctuation">:</span> /home/gitlab<span class="token punctuation">-</span>project/
+  <span class="token key atrule">ssh_password</span><span class="token punctuation">:</span> <span class="token number">111111</span>
+  <span class="token key atrule">repo_path</span><span class="token punctuation">:</span> /home/soft/maven/repo
+  <span class="token key atrule">jar_path</span><span class="token punctuation">:</span> com/example/demo/0.0.1<span class="token punctuation">-</span>SNAPSHOT
+
+<span class="token comment"># 定义执行的各个阶段及顺序</span>
+<span class="token key atrule">stages</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> build
+  <span class="token punctuation">-</span> upload
+  <span class="token punctuation">-</span> deploy
+ 
+<span class="token comment"># 使用 maven 镜像打包项目</span>
+<span class="token key atrule">maven-build</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> build
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> mvn clean install <span class="token punctuation">-</span>Dmaven.test.skip=true
+    <span class="token punctuation">-</span> echo &quot;打包结束&quot;
+
+<span class="token comment"># 将打包完成的jar包移动到指定的位置</span>
+<span class="token key atrule">upload-jar</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> upload
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> echo &quot;拷贝jar包到/home/gitlab<span class="token punctuation">-</span>project中&quot;
+    <span class="token punctuation">-</span> cd $repo_path/$jar_path
+    <span class="token punctuation">-</span> cp <span class="token punctuation">-</span>r $jar_name $upload_path
+<span class="token comment"># 启动 SpringBoot jar包</span>
+<span class="token key atrule">deploy-test</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> deploy
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> echo &quot;启动$jar_name&quot;
+    <span class="token punctuation">-</span> cd $upload_path
+    <span class="token punctuation">-</span> nohup java <span class="token punctuation">-</span>jar $jar_name <span class="token punctuation">&gt;</span>log.out &amp;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br></div></div><div class="language-yml line-numbers-mode"><pre class="language-yml"><code><span class="token comment"># 执行job的阶段 按顺序串行执行</span>
+<span class="token key atrule">stages</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> build
+  <span class="token punctuation">-</span> cleanup
+  <span class="token punctuation">-</span> deploy
+
+<span class="token comment"># 自定义阶段build的job流程</span>
+<span class="token key atrule">build</span><span class="token punctuation">:</span> <span class="token comment"># 自定义名字</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> build <span class="token comment"># 指定这阶段操作的名称</span>
+  <span class="token key atrule">only</span><span class="token punctuation">:</span> <span class="token comment"># 指定那些分支会进入该处理流程</span>
+    <span class="token punctuation">-</span> master <span class="token comment"># 正式环境</span>
+    <span class="token punctuation">-</span> pre <span class="token comment"># 预发环境</span>
+    <span class="token punctuation">-</span> testN <span class="token comment"># 测试环境 test1 test2 ... testN</span>
+    <span class="token punctuation">-</span> devN <span class="token comment"># 联调环境 dev1 dev2 ... devN</span>
+  <span class="token key atrule">variables</span><span class="token punctuation">:</span>
+    <span class="token key atrule">VERSION</span><span class="token punctuation">:</span> 1.0.10 <span class="token comment"># 除了后面会说到的私密变量 还可以在这里定义变量</span>
+  <span class="token key atrule">before_script</span><span class="token punctuation">:</span>
+    <span class="token comment"># 一些特殊情况需要SSH key的场景，该部分见下文</span>
+    <span class="token comment"># - ...</span>
+    <span class="token comment"># 定义变量 如NODE环境变量</span>
+    <span class="token punctuation">-</span> NODE_ENV=`if <span class="token punctuation">[</span><span class="token punctuation">[</span> $<span class="token punctuation">{</span>CI_COMMIT_REF_NAME<span class="token punctuation">:</span>0<span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">}</span> = &quot;dev&quot; <span class="token punctuation">|</span><span class="token punctuation">|</span> $<span class="token punctuation">{</span>CI_COMMIT_REF_NAME<span class="token punctuation">:</span>0<span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">}</span> = &quot;test&quot; <span class="token punctuation">]</span><span class="token punctuation">]</span>; then echo &quot;development&quot;; else echo &quot;production&quot;; fi`;
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token comment"># 为node modules做缓存， 有缓存用缓存，没有则你npm install并添加缓存</span>
+    <span class="token punctuation">-</span> PACKAGE_HASH=$(md5sum package.json <span class="token punctuation">|</span> awk '<span class="token punctuation">{</span>print $1<span class="token punctuation">}</span>');
+    <span class="token punctuation">-</span> mkdir <span class="token punctuation">-</span>p ~/builds/cache/node_modules <span class="token comment"># 使用docker模式时需要配置volume 保证缓存起作用 在后面runner部分会提到。</span>
+    <span class="token punctuation">-</span> NPM_CACHE=~/builds/cache/node_modules/$<span class="token punctuation">{</span>PACKAGE_HASH<span class="token punctuation">}</span>.tar
+    <span class="token punctuation">-</span> if <span class="token punctuation">[</span> <span class="token punctuation">-</span>f $NPM_CACHE <span class="token punctuation">]</span>;
+      then
+        echo &quot;Use Cache&quot;;
+        tar xf $NPM_CACHE;
+      else
+        npm install;
+        tar cf <span class="token punctuation">-</span> ./node_modules <span class="token punctuation">&gt;</span> $NPM_CACHE;
+      fi
+    <span class="token comment"># npm build</span>
+    <span class="token punctuation">-</span> echo &quot;NODE_ENV=$NODE_ENV node build/build.js&quot;
+    <span class="token punctuation">-</span> NODE_ENV=$NODE_ENV node build/build.js
+    <span class="token comment"># upload to CDN</span>
+    <span class="token comment"># - ...</span>
+    <span class="token comment"># docker build</span>
+    <span class="token punctuation">-</span> echo `docker build <span class="token punctuation">-</span>t &quot;$CI_PIPELINE_ID&quot; . <span class="token punctuation">|</span> awk <span class="token punctuation">-</span>F &quot;Successfully built &quot; '<span class="token punctuation">{</span>print $2<span class="token punctuation">}</span>'`
+    <span class="token comment"># docker push</span>
+    <span class="token punctuation">-</span> if <span class="token punctuation">[</span> $NODE_ENV = &quot;development&quot; <span class="token punctuation">]</span>; <span class="token comment"># 如果需要部署的server的runner在同一个机器则可不必push到仓库</span>
+      then
+        docker login dev.hub.xxx.com <span class="token punctuation">-</span>u$USERNAME <span class="token punctuation">-</span>p$PASSWORD;
+        docker tag $CI_PIPELINE_ID dev.hub.xxx.com/namespace/webapp<span class="token punctuation">:</span>$CI_COMMIT_REF_NAME;
+        docker push dev.hub.xxx.com/namespace/webapp<span class="token punctuation">:</span>$CI_COMMIT_REF_NAME;
+        docker rmi dev.hub.xxx.com/namespace/webapp<span class="token punctuation">:</span>$CI_COMMIT_REF_NAME;
+        echo &quot;<span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">-</span><span class="token punctuation">-</span>&quot;;
+        echo &quot;dev.hub.xxx.com/namespace/webapp<span class="token punctuation">:</span>$CI_COMMIT_REF_NAME&quot;;
+      else
+        <span class="token comment"># 参考上面then中脚本</span>
+        &quot;<span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">-</span><span class="token punctuation">-</span>&quot;;
+        echo &quot;hub.prd.xxx.com/namespace/webapp<span class="token punctuation">:</span>$DATE.$CI_BUILD_ID&quot;;
+      fi
+
+<span class="token comment"># 开发和测试机部署</span>
+<span class="token key atrule">clean_testN</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> cleanup
+  <span class="token key atrule">only</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> testN
+  <span class="token key atrule">tags</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> dc2fe<span class="token punctuation">-</span>deploy<span class="token punctuation">-</span>testN
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> docker stop webapp
+    <span class="token punctuation">-</span> docker rm webapp
+  <span class="token key atrule">allow_failure</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+
+<span class="token key atrule">deploy_testN</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> deploy
+  <span class="token key atrule">only</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> testN
+  <span class="token key atrule">tags</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> dc2fe<span class="token punctuation">-</span>deploy<span class="token punctuation">-</span>testN
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token comment"># - ssh root@IP &quot;docker stop webapp; docker rm webapp; docker run --name webapp -d -p 8000:8000 dev.hub.xxx.com/namespace/webapp-testN:latest&quot;</span>
+    <span class="token comment"># 或者</span>
+    <span class="token punctuation">-</span> docker pull dev.hub.xxx.com/namespace/webapp<span class="token punctuation">:</span>testN
+    <span class="token punctuation">-</span> docker run <span class="token punctuation">-</span><span class="token punctuation">-</span>name webapp <span class="token punctuation">-</span>d <span class="token punctuation">-</span>p 8000<span class="token punctuation">:</span>8000 dev.hub.xxx.com/namespace/webapp<span class="token punctuation">:</span>testN
+
+<span class="token comment"># clean_dev: # dev或其他环境部署配置与上面test环境配置类似</span>
+<span class="token comment"># deploy_dev:</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br></div></div></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2023-6-24 2:06:37 ├F10: AM┤</span></div></footer> <!----> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/./2022/10/08/gitlab%E9%80%9A%E8%BF%87cicd%E6%B5%81%E6%B0%B4%E7%BA%BF%E9%83%A8%E7%BD%B2/#环境准备" class="sidebar-link reco-side-环境准备" data-v-b57cc07c>环境准备</a></li><li class="level-3" data-v-b57cc07c><a href="/./2022/10/08/gitlab%E9%80%9A%E8%BF%87cicd%E6%B5%81%E6%B0%B4%E7%BA%BF%E9%83%A8%E7%BD%B2/#_1-jdk" class="sidebar-link reco-side-_1-jdk" data-v-b57cc07c>1.JDK：</a></li><li class="level-3" data-v-b57cc07c><a href="/./2022/10/08/gitlab%E9%80%9A%E8%BF%87cicd%E6%B5%81%E6%B0%B4%E7%BA%BF%E9%83%A8%E7%BD%B2/#_2-maven" class="sidebar-link reco-side-_2-maven" data-v-b57cc07c>2.maven：</a></li><li class="level-3" data-v-b57cc07c><a href="/./2022/10/08/gitlab%E9%80%9A%E8%BF%87cicd%E6%B5%81%E6%B0%B4%E7%BA%BF%E9%83%A8%E7%BD%B2/#_3-git" class="sidebar-link reco-side-_3-git" data-v-b57cc07c>3.Git</a></li><li class="level-3" data-v-b57cc07c><a href="/./2022/10/08/gitlab%E9%80%9A%E8%BF%87cicd%E6%B5%81%E6%B0%B4%E7%BA%BF%E9%83%A8%E7%BD%B2/#_4-docker-本次安装没有使用到-仅做了解使用" class="sidebar-link reco-side-_4-docker-本次安装没有使用到-仅做了解使用" data-v-b57cc07c>4.Docker (本次安装没有使用到，仅做了解使用)</a></li><li class="level-2" data-v-b57cc07c><a href="/./2022/10/08/gitlab%E9%80%9A%E8%BF%87cicd%E6%B5%81%E6%B0%B4%E7%BA%BF%E9%83%A8%E7%BD%B2/#gitlab安装" class="sidebar-link reco-side-gitlab安装" data-v-b57cc07c>GitLab安装</a></li><li class="level-3" data-v-b57cc07c><a href="/./2022/10/08/gitlab%E9%80%9A%E8%BF%87cicd%E6%B5%81%E6%B0%B4%E7%BA%BF%E9%83%A8%E7%BD%B2/#_1-安装" class="sidebar-link reco-side-_1-安装" data-v-b57cc07c>1.安装：</a></li><li class="level-3" data-v-b57cc07c><a href="/./2022/10/08/gitlab%E9%80%9A%E8%BF%87cicd%E6%B5%81%E6%B0%B4%E7%BA%BF%E9%83%A8%E7%BD%B2/#_2-安装gitlab-runner" class="sidebar-link reco-side-_2-安装gitlab-runner" data-v-b57cc07c>2.安装gitlab-runner</a></li><li class="level-3" data-v-b57cc07c><a href="/./2022/10/08/gitlab%E9%80%9A%E8%BF%87cicd%E6%B5%81%E6%B0%B4%E7%BA%BF%E9%83%A8%E7%BD%B2/#_3-gitlab-runner-注册" class="sidebar-link reco-side-_3-gitlab-runner-注册" data-v-b57cc07c>3.gitlab-runner 注册：</a></li><li class="level-3" data-v-b57cc07c><a href="/./2022/10/08/gitlab%E9%80%9A%E8%BF%87cicd%E6%B5%81%E6%B0%B4%E7%BA%BF%E9%83%A8%E7%BD%B2/#_4-编辑流水线配置" class="sidebar-link reco-side-_4-编辑流水线配置" data-v-b57cc07c>4.编辑流水线配置：</a></li><li class="level-3" data-v-b57cc07c><a href="/./2022/10/08/gitlab%E9%80%9A%E8%BF%87cicd%E6%B5%81%E6%B0%B4%E7%BA%BF%E9%83%A8%E7%BD%B2/#_5-安装过程中遇到的问题" class="sidebar-link reco-side-_5-安装过程中遇到的问题" data-v-b57cc07c>5.安装过程中遇到的问题</a></li><li class="level-2" data-v-b57cc07c><a href="/./2022/10/08/gitlab%E9%80%9A%E8%BF%87cicd%E6%B5%81%E6%B0%B4%E7%BA%BF%E9%83%A8%E7%BD%B2/#gitlab-cicd-流程规范" class="sidebar-link reco-side-gitlab-cicd-流程规范" data-v-b57cc07c>gitlab CICD 流程规范</a></li><li class="level-2" data-v-b57cc07c><a href="/./2022/10/08/gitlab%E9%80%9A%E8%BF%87cicd%E6%B5%81%E6%B0%B4%E7%BA%BF%E9%83%A8%E7%BD%B2/#附录常用命令及配置" class="sidebar-link reco-side-附录常用命令及配置" data-v-b57cc07c>附录常用命令及配置</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><!----></div></div>
+    <script src="./assets/js/app.764dede6.js" defer></script><script src="./assets/js/13.20e964b9.js" defer></script><script src="./assets/js/1.8757f81f.js" defer></script><script src="./assets/js/22.8c016772.js" defer></script><script src="./assets/js/34.ec572062.js" defer></script>
+  </body>
+</html>

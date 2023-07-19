@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>雪花算法 | 个人博客</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="./favicon.ico">
+    <script>
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?55943ae09e5901d7a9f5705133737eec";
+              var s = document.getElementsByTagName("script")[0];
+              s.parentNode.insertBefore(hm, s);
+            })();
+           </script>
+    <script src="https://hm.baidu.com/hm.js?xxxxxxxxxxx"></script>
+    <meta name="description" content="会思考的芦苇。">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="robots" content="all">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="preload" href="./assets/css/0.styles.f4f644f3.css" as="style"><link rel="preload" href="./assets/js/app.764dede6.js" as="script"><link rel="preload" href="./assets/js/13.20e964b9.js" as="script"><link rel="preload" href="./assets/js/1.8757f81f.js" as="script"><link rel="preload" href="./assets/js/32.b016f60e.js" as="script"><link rel="preload" href="./assets/js/34.ec572062.js" as="script"><link rel="prefetch" href="./assets/js/10.36ed4133.js"><link rel="prefetch" href="./assets/js/11.18e1c33d.js"><link rel="prefetch" href="./assets/js/12.b32071c5.js"><link rel="prefetch" href="./assets/js/14.d0932ff0.js"><link rel="prefetch" href="./assets/js/15.7747d51d.js"><link rel="prefetch" href="./assets/js/16.487f9c88.js"><link rel="prefetch" href="./assets/js/17.9ae2b89b.js"><link rel="prefetch" href="./assets/js/18.801c9b12.js"><link rel="prefetch" href="./assets/js/19.867ef46b.js"><link rel="prefetch" href="./assets/js/20.ec371d7f.js"><link rel="prefetch" href="./assets/js/21.73f810bc.js"><link rel="prefetch" href="./assets/js/22.8c016772.js"><link rel="prefetch" href="./assets/js/23.9aa3d5ef.js"><link rel="prefetch" href="./assets/js/24.a6dcda10.js"><link rel="prefetch" href="./assets/js/25.2fe13775.js"><link rel="prefetch" href="./assets/js/26.2296389e.js"><link rel="prefetch" href="./assets/js/27.21f2d66f.js"><link rel="prefetch" href="./assets/js/28.3209357f.js"><link rel="prefetch" href="./assets/js/29.c7065b7f.js"><link rel="prefetch" href="./assets/js/3.9efa3b27.js"><link rel="prefetch" href="./assets/js/30.92914cc9.js"><link rel="prefetch" href="./assets/js/31.13c12633.js"><link rel="prefetch" href="./assets/js/33.ed48a654.js"><link rel="prefetch" href="./assets/js/35.5b55607b.js"><link rel="prefetch" href="./assets/js/36.f50b6e38.js"><link rel="prefetch" href="./assets/js/37.34409ac4.js"><link rel="prefetch" href="./assets/js/38.c7073f77.js"><link rel="prefetch" href="./assets/js/39.12f063e9.js"><link rel="prefetch" href="./assets/js/4.95c562bd.js"><link rel="prefetch" href="./assets/js/40.1bbd5377.js"><link rel="prefetch" href="./assets/js/41.6331a8cf.js"><link rel="prefetch" href="./assets/js/42.28acd6f5.js"><link rel="prefetch" href="./assets/js/43.905d2114.js"><link rel="prefetch" href="./assets/js/44.041132c5.js"><link rel="prefetch" href="./assets/js/45.d1a66b92.js"><link rel="prefetch" href="./assets/js/46.1c9100fe.js"><link rel="prefetch" href="./assets/js/47.3e75f768.js"><link rel="prefetch" href="./assets/js/48.7d7248fb.js"><link rel="prefetch" href="./assets/js/49.8d465809.js"><link rel="prefetch" href="./assets/js/5.a1a0df33.js"><link rel="prefetch" href="./assets/js/50.4aa56564.js"><link rel="prefetch" href="./assets/js/51.59674bf5.js"><link rel="prefetch" href="./assets/js/52.f3990683.js"><link rel="prefetch" href="./assets/js/53.092fe0ad.js"><link rel="prefetch" href="./assets/js/54.ac62e2a7.js"><link rel="prefetch" href="./assets/js/55.3530fa5a.js"><link rel="prefetch" href="./assets/js/56.6e9bc6f3.js"><link rel="prefetch" href="./assets/js/6.e534639a.js"><link rel="prefetch" href="./assets/js/7.bc868936.js"><link rel="prefetch" href="./assets/js/8.ce0f4f25.js"><link rel="prefetch" href="./assets/js/9.a57a9cf0.js">
+    <link rel="stylesheet" href="./assets/css/0.styles.f4f644f3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>Gordon</h3> <p class="description" data-v-59e6cb88>会思考的芦苇。</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>Gordon</span>
+          
+        <span data-v-59e6cb88>2018 - </span>
+        2023
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/./" class="home-link router-link-active"><img src="./logo.png" alt="个人博客" class="logo"> <span class="site-name">个人博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/./" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      计算引擎
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/./计算引擎/flink.html" class="nav-link"><i class="undefined"></i>
+  flink
+</a></li><li class="dropdown-item"><!----> <a href="/./计算引擎/spark.html" class="nav-link"><i class="undefined"></i>
+  spark
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      存储引擎
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/./存储引擎/ElasticSearch.html" class="nav-link"><i class="undefined"></i>
+  ElasticSearch
+</a></li><li class="dropdown-item"><!----> <a href="/./存储引擎/hbase.html" class="nav-link"><i class="undefined"></i>
+  hbase
+</a></li><li class="dropdown-item"><!----> <a href="/./存储引擎/redis.html" class="nav-link"><i class="undefined"></i>
+  redis
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      云原生
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/./云原生/Docker.html" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      中间件
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/./中间件/kafka.html" class="nav-link"><i class="undefined"></i>
+  kafka
+</a></li><li class="dropdown-item"><!----> <a href="/./中间件/Sqoop基本使用.html" class="nav-link"><i class="undefined"></i>
+  Sqoop基本使用
+</a></li></ul></div></div><div class="nav-item"><a href="/./tool/emoji/我的常用emoji.html" class="nav-link"><i class="undefined"></i>
+  工具
+</a></div><div class="nav-item"><a href="/./aboutme.html" class="nav-link"><i class="iconfont reco-account"></i>
+  关于我
+</a></div> <a href="https://github.com/GordonChanFZ/gordonchanfz.github.io/" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><img src="./avatar.jpeg" alt="author-avatar" class="personal-img" data-v-1fad0c41> <h3 class="name" data-v-1fad0c41>
+    Gordon
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>30</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>47</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41><li class="social-item" data-v-1fad0c41><i class="iconfont reco-github" style="color:#e15b64;" data-v-1fad0c41></i></li></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/./" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      计算引擎
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/./计算引擎/flink.html" class="nav-link"><i class="undefined"></i>
+  flink
+</a></li><li class="dropdown-item"><!----> <a href="/./计算引擎/spark.html" class="nav-link"><i class="undefined"></i>
+  spark
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      存储引擎
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/./存储引擎/ElasticSearch.html" class="nav-link"><i class="undefined"></i>
+  ElasticSearch
+</a></li><li class="dropdown-item"><!----> <a href="/./存储引擎/hbase.html" class="nav-link"><i class="undefined"></i>
+  hbase
+</a></li><li class="dropdown-item"><!----> <a href="/./存储引擎/redis.html" class="nav-link"><i class="undefined"></i>
+  redis
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      云原生
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/./云原生/Docker.html" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      中间件
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/./中间件/kafka.html" class="nav-link"><i class="undefined"></i>
+  kafka
+</a></li><li class="dropdown-item"><!----> <a href="/./中间件/Sqoop基本使用.html" class="nav-link"><i class="undefined"></i>
+  Sqoop基本使用
+</a></li></ul></div></div><div class="nav-item"><a href="/./tool/emoji/我的常用emoji.html" class="nav-link"><i class="undefined"></i>
+  工具
+</a></div><div class="nav-item"><a href="/./aboutme.html" class="nav-link"><i class="iconfont reco-account"></i>
+  关于我
+</a></div> <a href="https://github.com/GordonChanFZ/gordonchanfz.github.io/" target="_blank" rel="noopener noreferrer" class="repo-link"><i class="iconfont reco-github"></i>
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>雪花算法</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>Gordon</span>
+          
+        <span data-v-59e6cb88>2018 - </span>
+        2023
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">雪花算法</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>Gordon</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2022-1-8</span></i> <!----> <i class="tags iconfont reco-tag" data-v-8a445198><span class="tag-item" data-v-8a445198>分布式id生成</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="简介"><a href="#简介" class="header-anchor">#</a> 简介</h2> <p>雪花算法，英文名为snowflake，翻译过来就是是雪花，所以叫雪花算法。</p> <p>在大自然雪花形成过程中，会形成不同的结构分支，所以说不存在两片完全一样的雪花，表示生成的id如雪花般独一无二。</p> <p><img src="https://static.mikechen.cc/wp-content/uploads/2022/09/snowflake-algorithm-01.png" alt="雪花算法详解(雪花算法.assets/snowflake-algorithm-01.png)-mikechen的互联网架构"></p> <p>雪花算法，它最早是twitter内部使用的<strong>分布式环境下的唯一分布式ID生成算法</strong>。</p> <h2 id="原理"><a href="#原理" class="header-anchor">#</a> 原理</h2> <p>详细的雪花算法构造如下图所示：</p> <p><img src="https://static.mikechen.cc/wp-content/uploads/2021/12/15027.png" alt="雪花算法详解(雪花算法.assets/15027.png)-mikechen的互联网架构"></p> <p>雪花算法的原理：就是生成一个的 64 位的 long 类型的唯一 id，<strong>主要分为如下4个部分组成：</strong></p> <p><strong>1）1位保留 (基本不用)</strong></p> <p>1位标识：由于long基本类型在Java中是带符号的，最高位是符号位，正数是0，负数是1，所以id一般是正数，最高位是0，所以这第一位都是0。</p> <p><strong>2）41位时间戳</strong></p> <p>接下来 41 位存储毫秒级时间戳，41位可以表示2^41-1个毫秒的值，转化成单位年则是:(2^41−1)/(1000∗60∗60∗24∗365)=69年 。</p> <p>41位时间戳 ：也就是说这个时间戳可以使用69年不重复，大概可以使用 69 年。</p> <p>注意：41位时间截不是存储当前时间的时间截，而是存储时间截的差值“<strong>当前时间截 – 开始时间截</strong>”得到的值。</p> <p>这里的的开始时间截，一般是我们的id生成器开始使用的时间，由我们程序来指定的，<strong>一般设置好后就不要去改变了，切记！！！</strong></p> <p>因为，雪花算法有如下缺点：依赖服务器时间，<strong>服务器时钟回拨时可能会生成重复 id</strong>。</p> <p><strong>3）10位机器</strong></p> <p>10位的数据机器位，可以部署在1024个节点，包括5位datacenterId和5位workerId，最多可以部署 2^10=1024 台机器。</p> <p>这里的5位可以表示的最大正整数是2^5−1=31，即可以用0、1、2、3、….31这32个数字，来表示不同的datecenterId，或workerId。</p> <p><strong>4） 12bit序列号</strong></p> <p>用来记录同毫秒内产生的不同id，12位的计数顺序号支持每个节点每毫秒(同一机器，同一时间截)产生4096个ID序号。</p> <p>理论上雪花算法方案的QPS约为409.6w/s，这种分配方式可以保证在任何一个IDC的任何一台机器在任意毫秒内生成的ID都是不同的。</p> <h2 id="代码实现"><a href="#代码实现" class="header-anchor">#</a> 代码实现</h2> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IdWorker</span> <span class="token punctuation">{</span>
+ 
+	<span class="token comment">//因为二进制里第一个 bit 为如果是 1，那么都是负数，但是我们生成的 id 都是正数，所以第一个 bit 统一都是 0。</span>
+
+	<span class="token comment">//设置一个时间初始值    2^41 - 1   差不多可以用69年</span>
+	<span class="token keyword">private</span> <span class="token keyword">long</span> twepoch <span class="token operator">=</span> <span class="token number">1585644268888L</span><span class="token punctuation">;</span>
+
+	<span class="token comment">//机器ID  2进制5位  32位减掉1位 31个</span>
+	<span class="token keyword">private</span> <span class="token keyword">long</span> workerId<span class="token punctuation">;</span>
+	<span class="token comment">//机房ID 2进制5位  32位减掉1位 31个</span>
+	<span class="token keyword">private</span> <span class="token keyword">long</span> datacenterId<span class="token punctuation">;</span>
+	<span class="token comment">//代表一毫秒内生成的多个id的最新序号  12位 4096 -1 = 4095 个</span>
+	<span class="token keyword">private</span> <span class="token keyword">long</span> sequence<span class="token punctuation">;</span>
+	<span class="token comment">//5位的机器id</span>
+	<span class="token keyword">private</span> <span class="token keyword">long</span> workerIdBits <span class="token operator">=</span> <span class="token number">5L</span><span class="token punctuation">;</span>
+	<span class="token comment">//5位的机房id</span>
+	<span class="token keyword">private</span> <span class="token keyword">long</span> datacenterIdBits <span class="token operator">=</span> <span class="token number">5L</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 *
+	 *         -1的源码   10000001
+	 *         -1的反码   11111110
+	 *         -1的补码   11111111
+	 *         -1左移12位= 1111 1111 0000 0000 0000
+	 *         -1       = 1111 1111 1111 1111 1111
+	 *         异或运算  = 0000 0000 1111 1111 1111=4095
+	 *         因此sequenceMask的值为4095
+	 *
+	 */</span>
+	<span class="token comment">// 这个是二进制运算，就是5 bit最多只能有31个数字，也就是说机器id最多只能是32以内</span>
+	<span class="token keyword">private</span> <span class="token keyword">long</span> maxWorkerId <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1L</span> <span class="token operator">^</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1L</span> <span class="token operator">&lt;&lt;</span> workerIdBits<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 这个是一个意思，就是5 bit最多只能有31个数字，机房id最多只能是32以内</span>
+	<span class="token keyword">private</span> <span class="token keyword">long</span> maxDatacenterId <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1L</span> <span class="token operator">^</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1L</span> <span class="token operator">&lt;&lt;</span> datacenterIdBits<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token comment">//每毫秒内产生的id数 2 的 12次方</span>
+	<span class="token keyword">private</span> <span class="token keyword">long</span> sequenceBits <span class="token operator">=</span> <span class="token number">12L</span><span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token keyword">long</span> sequenceMask <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1L</span> <span class="token operator">^</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1L</span> <span class="token operator">&lt;&lt;</span> sequenceBits<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+	<span class="token keyword">private</span> <span class="token keyword">long</span> workerIdShift <span class="token operator">=</span> sequenceBits<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token keyword">long</span> datacenterIdShift <span class="token operator">=</span> sequenceBits <span class="token operator">+</span> workerIdBits<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token keyword">long</span> timestampLeftShift <span class="token operator">=</span> sequenceBits <span class="token operator">+</span> workerIdBits <span class="token operator">+</span> datacenterIdBits<span class="token punctuation">;</span>
+
+	<span class="token comment">//记录产生时间毫秒数，判断是否是同1毫秒</span>
+	<span class="token keyword">private</span> <span class="token keyword">long</span> lastTimestamp <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1L</span><span class="token punctuation">;</span>
+	<span class="token keyword">public</span> <span class="token keyword">long</span> <span class="token function">getWorkerId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">return</span> workerId<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">long</span> <span class="token function">getDatacenterId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> datacenterId<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">long</span> <span class="token function">getTimestamp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+ 
+ 
+ 
+	<span class="token keyword">public</span> <span class="token class-name">IdWorker</span><span class="token punctuation">(</span><span class="token keyword">long</span> workerId<span class="token punctuation">,</span> <span class="token keyword">long</span> datacenterId<span class="token punctuation">,</span> <span class="token keyword">long</span> sequence<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ 
+		<span class="token comment">// 检查机房id和机器id是否超过31 不能小于0</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>workerId <span class="token operator">&gt;</span> maxWorkerId <span class="token operator">||</span> workerId <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span>
+					<span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">&quot;worker Id can't be greater than %d or less than 0&quot;</span><span class="token punctuation">,</span>maxWorkerId<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+ 
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>datacenterId <span class="token operator">&gt;</span> maxDatacenterId <span class="token operator">||</span> datacenterId <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ 
+			<span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span>
+					<span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">&quot;datacenter Id can't be greater than %d or less than 0&quot;</span><span class="token punctuation">,</span>maxDatacenterId<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>workerId <span class="token operator">=</span> workerId<span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>datacenterId <span class="token operator">=</span> datacenterId<span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>sequence <span class="token operator">=</span> sequence<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+ 
+	<span class="token comment">// 这个是核心方法，通过调用nextId()方法，让当前这台机器上的snowflake算法程序生成一个全局唯一的id</span>
+	<span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">long</span> <span class="token function">nextId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">// 这儿就是获取当前时间戳，单位是毫秒</span>
+		<span class="token keyword">long</span> timestamp <span class="token operator">=</span> <span class="token function">timeGen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>timestamp <span class="token operator">&lt;</span> lastTimestamp<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">//时间回调抛出异常</span>
+ 
+			<span class="token class-name">System</span><span class="token punctuation">.</span>err<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span>
+					<span class="token string">&quot;clock is moving backwards. Rejecting requests until %d.&quot;</span><span class="token punctuation">,</span> lastTimestamp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span>
+					<span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">&quot;Clock moved backwards. Refusing to generate id for %d milliseconds&quot;</span><span class="token punctuation">,</span>
+							lastTimestamp <span class="token operator">-</span> timestamp<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+ 
+		<span class="token comment">// 下面是说假设在同一个毫秒内，又发送了一个请求生成一个id</span>
+		<span class="token comment">// 这个时候就得把seqence序号给递增1，最多就是4096</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>lastTimestamp <span class="token operator">==</span> timestamp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ 
+			<span class="token comment">// 这个意思是说一个毫秒内最多只能有4096个数字，无论你传递多少进来，</span>
+			<span class="token comment">//这个位运算保证始终就是在4096这个范围内，避免你自己传递个sequence超过了4096这个范围</span>
+			sequence <span class="token operator">=</span> <span class="token punctuation">(</span>sequence <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> sequenceMask<span class="token punctuation">;</span>
+			<span class="token comment">//当某一毫秒的时间，产生的id数 超过4095，系统会进入等待，直到下一毫秒，系统继续产生ID</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>sequence <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				timestamp <span class="token operator">=</span> <span class="token function">tilNextMillis</span><span class="token punctuation">(</span>lastTimestamp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+ 
+		<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+			sequence <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token comment">// 这儿记录一下最近一次生成id的时间戳，单位是毫秒</span>
+		lastTimestamp <span class="token operator">=</span> timestamp<span class="token punctuation">;</span>
+		<span class="token comment">// 这儿就是最核心的二进制位运算操作，生成一个64bit的id</span>
+		<span class="token comment">// 先将当前时间戳左移，放到41 bit那儿；将机房id左移放到5 bit那儿；将机器id左移放到5 bit那儿；将序号放最后12 bit</span>
+		<span class="token comment">// 最后拼接起来成一个64 bit的二进制数字，转换成10进制就是个long型</span>
+		<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>timestamp <span class="token operator">-</span> twepoch<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> timestampLeftShift<span class="token punctuation">)</span> <span class="token operator">|</span>
+				<span class="token punctuation">(</span>datacenterId <span class="token operator">&lt;&lt;</span> datacenterIdShift<span class="token punctuation">)</span> <span class="token operator">|</span>
+				<span class="token punctuation">(</span>workerId <span class="token operator">&lt;&lt;</span> workerIdShift<span class="token punctuation">)</span> <span class="token operator">|</span> sequence<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+ 
+	<span class="token comment">/**
+	 * 当某一毫秒的时间，产生的id数 超过4095，系统会进入等待，直到下一毫秒，系统继续产生ID
+	 * @param lastTimestamp
+	 * @return
+	 */</span>
+	<span class="token keyword">private</span> <span class="token keyword">long</span> <span class="token function">tilNextMillis</span><span class="token punctuation">(</span><span class="token keyword">long</span> lastTimestamp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ 
+		<span class="token keyword">long</span> timestamp <span class="token operator">=</span> <span class="token function">timeGen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+		<span class="token keyword">while</span> <span class="token punctuation">(</span>timestamp <span class="token operator">&lt;=</span> lastTimestamp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			timestamp <span class="token operator">=</span> <span class="token function">timeGen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> timestamp<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token comment">//获取当前时间戳</span>
+	<span class="token keyword">private</span> <span class="token keyword">long</span> <span class="token function">timeGen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+ 
+	<span class="token comment">/**
+	 *  main 测试类
+	 * @param args
+	 */</span>
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">&amp;</span><span class="token number">4596</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">&amp;</span><span class="token number">4596</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token operator">&amp;</span><span class="token number">4596</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token operator">&amp;</span><span class="token number">4596</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token operator">&amp;</span><span class="token number">4596</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token operator">&amp;</span><span class="token number">4596</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//		IdWorker worker = new IdWorker(1,1,1);</span>
+<span class="token comment">//		for (int i = 0; i &lt; 22; i++) {</span>
+<span class="token comment">//			System.out.println(worker.nextId());</span>
+<span class="token comment">//		}</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br></div></div><h2 id="优缺点"><a href="#优缺点" class="header-anchor">#</a> 优缺点</h2> <p><strong>雪花算法，它至少有如下4个优点：</strong></p> <p><strong>1.系统环境ID不重复</strong></p> <p>能满足高并发分布式系统环境ID不重复，比如大家熟知的分布式场景下的数据库表的ID生成。</p> <p><strong>2.生成效率极高</strong></p> <p>在高并发，以及分布式环境下，除了生成不重复 id，每秒可生成百万个不重复 id，生成效率极高。</p> <p><strong>3.保证基本有序递增</strong></p> <p>基于时间戳，可以保证基本有序递增，很多业务场景都有这个需求。</p> <p><strong>4.不依赖第三方库</strong></p> <p>不依赖第三方的库，或者中间件，算法简单，在内存中进行。</p> <p><strong>雪花算法，有一个比较大的缺点：</strong></p> <p>依赖服务器时间，服务器时钟回拨时可能会生成重复 id。</p> <h2 id="时钟回拨的解决方案"><a href="#时钟回拨的解决方案" class="header-anchor">#</a> 时钟回拨的解决方案</h2> <h3 id="问题阐述"><a href="#问题阐述" class="header-anchor">#</a> 问题阐述</h3> <p>既然是雪花算法的问题，那我们就来看下雪花算法出了什么问题：</p> <p>（1）What：雪花算法生成了重复的 ID，这些 ID 是什么样的？</p> <p>（2）Why：雪花算法为什么生成了重复的 key</p> <p>第一个问题，我们可以通过报错信息发现，这个重复的 ID 是 <code>-1</code>，这个就很奇怪了。一般雪花算法生成的唯一 ID 如下所示，我分别用二进制和十进制来表示：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>十进制表示：2097167233578045440
+
+二进制表示：0001 1101 0001 1010 1010 0010 0111 1100 1101 1000 0000 0010 0001 0000 0000 0000
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>找到项目中使用雪花算法的工具类，生成 ID 的时候有个判断逻辑：</p> <blockquote><p>当<code>当前时间</code>小于<code>上次的生成时间</code>就会返回 <code>-1</code>，所以问题就出在这个逻辑上面。(上述代码的雪花算法是直接抛异常)</p></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code>if (timestamp &lt; this.lastTimestamp) {
+   return -1;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p><img src="./assets/img/640.c5f68fb4.png" alt="Image"></p> <p>由于每次 <code>timestamp</code> 都是小于<code>lastTimeStamp</code>，所以<strong>每次都返回了 -1</strong>，这也解释了为什么生成了重复的 key。</p> <p><strong>时钟回拨或跳跃</strong></p> <p>那么问题就<code>聚焦</code>在为什么<code>当前时间</code>还会小于<code>上次的生成时间</code>。</p> <p>下面有种场景可能发生这种情况：</p> <p>首先假定当前的北京时间是 9:00:00。另外上次生成 ID 的时候，服务器获取的时间 lastTimestamp=10:00:00，而现在服务器获取的当前时间 timestamp=09:00:00，这就相当于服务器之前是获取了一个未来时间，现在突然<code>跳跃</code>到当前时间。</p> <p>而这种场景我们称之为<code>时钟回拨</code>或<code>时钟跳跃</code>。</p> <p><strong>时钟回拨</strong>：服务器时钟可能会因为各种原因发生不准，而网络中会提供 NTP 服务来做时间校准，因此在做校准的时候，服务器时钟就会发生时钟的跳跃或者回拨问题。</p> <p><strong>时钟同步</strong></p> <p>那么服务器为什么会发生时钟回拨或跳跃呢？</p> <blockquote><p>我们猜测是不是服务器上的时钟不同步后，又自动进行同步了，前后时间不一致。</p></blockquote> <p>首先我们的每台服务器上都安装了 <code>ntpdate</code> 软件，作为 NTP 客户端，会每隔 <code>10 分钟</code>向 <code>NTP 时间服务器</code>同步一次时间。</p> <p>如下图所示，服务器 1 和 服务器 2 部署了应用服务，每隔 10 分钟向<code>时间服务器</code>同步一次时间，来保证服务器 1 和服务器 2 的时间和<code>时间服务器</code>的时间一致。</p> <p><img src="./assets/img/640-1682138311647.244cac01.png" alt="Image"></p> <p>每隔 10 分钟同步的设置：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>*/10 * * * * /usr/sbin/ntpdate &lt;ip&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>另外时间服务器会向 <code>NTP Pool</code>同步时间，NTP Pool 正在为世界各地成百上千万的系统提供服务。它是绝大多数主流Linux发行版和许多网络设备的默认“时间服务器”。（参考ntppool.org）</p> <p>那问题就是 NTP 同步出了问题？？</p> <p><strong>时钟不同步</strong></p> <p>我们到服务器上查看了下时间，<strong>确实和时钟服务器不同步，早了几分钟。</strong></p> <p>当我们执行 NTP 同步的命令后，时钟又同步了，也就是说时间回拨了。同步的命令如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>ntpdate  &lt;时钟服务器 IP&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><strong>在产生事故之前，我们重启过服务器 1。我们推测服务器重启后，服务器因网络问题没有正常同步</strong>。而在下一次定时同步操作到来之前的这个时间段，我们的后端服务已经出现了因 ID 重复导致的大量异常问题。</p> <p>这个 NTP 时钟回拨的偶发现象并不常见，但时钟回拨确实会带了很多问题，比如<code>润秒</code> 问题也会带来 1s 时间的回拨。</p> <p>为了预防这种情况的发生，网上也有一些开源解决方案。</p> <h3 id="解决方案"><a href="#解决方案" class="header-anchor">#</a> 解决方案</h3> <p>（1）方式一：使用美团 Leaf方案，基于雪花算法。</p> <p>（2）方式二：使用百度 UidGenerator，基于雪花算法。</p> <p>（3）方式三：用 Redis 生成自增的分布式 ID。弊端是 ID 容易被猜到，有安全风险。</p> <h4 id="美团的leaf方案"><a href="#美团的leaf方案" class="header-anchor">#</a> 美团的Leaf方案</h4> <p>美团的开源项目 <code>Leaf</code> 的方案：采用依赖 <code>ZooKeeper</code> 的数据存储。如果时钟回拨的时间超过最大容忍的毫秒数阈值，则程序报错；如果在可容忍的范围内，Leaf 会<strong>等待时钟同步到最后一次主键生成的时间后再继续工作</strong>。</p> <p><strong>重点就是需要等待时钟同步！</strong></p> <p><img src="./assets/img/640-1682139294693.c1386af2.png" alt="Image"></p> <h4 id="百度-uidgenerator-方案"><a href="#百度-uidgenerator-方案" class="header-anchor">#</a> 百度 UidGenerator 方案</h4> <p>百度<code>UidGenerator</code>方案不在每次获取 ID 时都实时计算分布式 ID，而是利用 RingBuffer 数据结构，通过缓存的方式预生成一批唯一 ID 列表，然后通过 incrementAndGet() 方法获取下一次的时间，从而脱离了对服务器时间的依赖，也就不会有时钟回拨的问题。</p> <p><strong>重点就是预生成一批 ID！</strong></p> <p>Github地址：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>https://github.com/baidu/uid-generator
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2023-6-24 2:06:37 ├F10: AM┤</span></div></footer> <!----> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/./2022/01/08/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95/#简介" class="sidebar-link reco-side-简介" data-v-b57cc07c>简介</a></li><li class="level-2" data-v-b57cc07c><a href="/./2022/01/08/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95/#原理" class="sidebar-link reco-side-原理" data-v-b57cc07c>原理</a></li><li class="level-2" data-v-b57cc07c><a href="/./2022/01/08/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95/#代码实现" class="sidebar-link reco-side-代码实现" data-v-b57cc07c>代码实现</a></li><li class="level-2" data-v-b57cc07c><a href="/./2022/01/08/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95/#优缺点" class="sidebar-link reco-side-优缺点" data-v-b57cc07c>优缺点</a></li><li class="level-2" data-v-b57cc07c><a href="/./2022/01/08/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95/#时钟回拨的解决方案" class="sidebar-link reco-side-时钟回拨的解决方案" data-v-b57cc07c>时钟回拨的解决方案</a></li><li class="level-3" data-v-b57cc07c><a href="/./2022/01/08/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95/#问题阐述" class="sidebar-link reco-side-问题阐述" data-v-b57cc07c>问题阐述</a></li><li class="level-3" data-v-b57cc07c><a href="/./2022/01/08/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95/#解决方案" class="sidebar-link reco-side-解决方案" data-v-b57cc07c>解决方案</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><!----></div></div>
+    <script src="./assets/js/app.764dede6.js" defer></script><script src="./assets/js/13.20e964b9.js" defer></script><script src="./assets/js/1.8757f81f.js" defer></script><script src="./assets/js/32.b016f60e.js" defer></script><script src="./assets/js/34.ec572062.js" defer></script>
+  </body>
+</html>
